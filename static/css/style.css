@@ -1,0 +1,148 @@
+
+/* =========================
+   Global Reset
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* =========================
+   Navbar
+========================= */
+.navbar {
+    background: #0d6efd;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   Main Container
+========================= */
+.container {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* =========================
+   Card Layout
+========================= */
+.card {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #0d6efd;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* =========================
+   Doctors List
+========================= */
+.card ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.card ul li {
+    background: #f4f7fb;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #e3e8f0;
+}
+
+/* =========================
+   Form Styling (Book Page)
+========================= */
+form {
+    margin-top: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #cfd8e3;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+/* =========================
+   Button
+========================= */
+button {
+    background: #0d6efd;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #0b5ed7;
+}

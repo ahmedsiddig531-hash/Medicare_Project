@@ -1,0 +1,23 @@
+  {% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Quality Healthcare, Simplified</h1>
+    <p>
+        Medicare Is A Smart Healthcare Platform Designed To Connect Patients With Qualified Medical Professionals.
+        It Enables Users To Explore Doctors, Schedule Appointments, And Access Healthcare Services
+        Efficiently And Securely.
+        <div><h2>Available Rooms</h2>
+        <ul>
+            {% for room in rooms %}
+                <div>  
+                    <h5>{{ room.id }} -- {{ room.name }}</h5>
+
+                </div>
+            {% endfor %}
+    </p>
+</div>
+{% endblock %}
+
+
