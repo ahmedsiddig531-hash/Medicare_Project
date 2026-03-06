@@ -1,0 +1,32 @@
+{% load static %}
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+<div class="logo">
+<img src="{% static 'images/logo.png' %}" alt="logo">
+</div>
+
+<input class="search-bar" type="text" placeholder="Search...">
+
+<div class="nav-icons">
+<button class="icon-btn">⚙</button>
+<button class="login-btn">Login</button>
+</div>
+
+</div>
+
+
+<div class="nav-buttons">
+
+<a href="{% url 'doctors' %}">See Doctors</a>
+<a href="#">Drugs & Supplements</a>
+<a href="#">Health Library</a>
+<a href="{% url 'book_appointment' %}">Book Appointment</a>
+<a href="#">Research</a>
+<a href="{% url 'wellbeing' %}">Well-Being</a>
+
+</div>
+
+</nav>

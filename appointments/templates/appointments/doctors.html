@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+Doctors
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+<h1>Find Doctors</h1>
+
+<form method="GET">
+
+<label>Select Department</label>
+
+<select name="department">
+
+<option value="">-- Choose Department --</option>
+
+{% for department in departments %}
+
+<option value="{{ department.id }}">
+{{ department.name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<button type="submit">Search</button>
+
+</form>
+
+<hr>
+
+{% if doctors %}
+
+<div class="doctors-grid">
+
+{% for doctor in doctors %}
+
+<div class="doctor-card">
+
+<h3>{{ doctor.name }}</h3>
+
+<p><strong>Department:</strong> {{ doctor.department.name }}</p>
+
+<p><strong>Experience:</strong> {{ doctor.experience }} years</p>
+
+<p>{{ doctor.bio }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}
