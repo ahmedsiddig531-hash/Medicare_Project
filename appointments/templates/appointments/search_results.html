@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+<h2>Search Results for "{{ query }}"</h2>
+
+<h3>Doctors</h3>
+
+{% for doctor in doctors %}
+<p>
+<a href="{% url 'doctor_detail' doctor.id %}">
+{{ doctor.name }} - {{ doctor.department.name }}
+</a>
+</p>
+{% empty %}
+<p>No doctors found</p>
+{% endfor %}
+
+<hr>
+
+<h3>Departments</h3>
+
+{% for department in departments %}
+<p>{{ department.name }}</p>
+{% empty %}
+<p>No departments found</p>
+{% endfor %}
+
+<hr>
+
+<h3>Articles</h3>
+
+{% for article in articles %}
+<p>{{ article.title }}</p>
+{% empty %}
+<p>No articles found</p>
+{% endfor %}
+
+</div>
+
+{% endblock %}

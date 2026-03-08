@@ -2,25 +2,67 @@
 
 {% block content %}
 
-<h2>{{ article.title }}</h2>
+<div class="article-container">
 
-<p>{{ article.content }}</p>
+<h1 class="article-title">{{ article.title }}</h1>
 
-<p>Views: {{ article.views }}</p>
+{% if article.image %}
+<img src="{{ article.image.url }}" class="article-image">
+{% endif %}
+
+<p class="article-content">
+{{ article.content }}
+</p>
+
+<p class="article-views">Views: {{ article.views }}</p>
+
+</div>
 
 
-<h3>Comments</h3>
+<div class="comments-section">
+
+<h2>Comments ({{ comments|length }})</h2>
 
 {% for comment in comments %}
 
-<p><strong>{{ comment.name }}</strong></p>
-<p>{{ comment.text }}</p>
-<hr>
+<div class="comment-card">
+
+<div class="comment-avatar">
+{{ comment.name|slice:":1" }}
+</div>
+
+<div class="comment-body">
+
+<div class="comment-header">
+
+<strong>{{ comment.name }}</strong>
+
+{% if comment.created_at %}
+<span class="comment-date">
+{{ comment.created_at|date:"M d, Y H:i" }}
+</span>
+{% endif %}
+
+</div>
+
+<p class="comment-text">{{ comment.text }}</p>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<p>No comments yet.</p>
 
 {% endfor %}
 
+</div>
 
-<h3>Add Comment</h3>
+
+<div class="comment-form">
+
+<h2>Add Comment</h2>
 
 <form method="POST" action="{% url 'add_comment' article.id %}">
 
@@ -28,10 +70,12 @@
 
 <input type="text" name="name" placeholder="Your name" required>
 
-<textarea name="text" placeholder="Write comment..." required></textarea>
+<textarea name="text" placeholder="Write your comment..." required></textarea>
 
 <button type="submit">Add Comment</button>
 
 </form>
+
+</div>
 
 {% endblock %}

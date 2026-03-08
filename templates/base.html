@@ -3,18 +3,97 @@
 <html>
 
 <head>
-    <title>{% block title %}Medicare{% endblock %}</title>
+<title>{% block title %}Medicare{% endblock %}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 
 <body>
 
-    {% include "navbar.html" %}
+{% include "navbar.html" %}
 
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+ <footer class="footer">
 
+<div class="footer-container">
+
+<div class="footer-section">
+<h3>Medicare</h3>
+<p>
+Medicare is a healthcare platform that helps patients find doctors
+and book appointments easily.
+</p>
+</div>
+
+
+<div class="footer-section">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="{% url 'home' %}">Home</a></li>
+ <li><a href="{% url 'doctors' %}">Doctors</a></li>
+<li><a href="{% url 'doctors' %}">Book Appointment</a></li>
+<li><a href="{% url 'wellbeing' %}">Wellbeing</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h3>Contact</h3>
+<p>Email: support@medicare.com</p>
+<p>Phone: +123 456 789</p>
+<p>Location: Healthcare City</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Medicare Healthcare System. All Rights Reserved.</p>
+</div>
+
+</footer>
+ <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const searchInput = document.getElementById("search-input");
+const resultsBox = document.getElementById("search-results");
+
+searchInput.addEventListener("keyup", function(){
+
+let query = this.value;
+
+if(query.length < 1){
+resultsBox.innerHTML="";
+return;
+}
+
+fetch(`/live-search/?q=${query}`)
+.then(response => response.json())
+.then(data => {
+
+resultsBox.innerHTML = "";
+
+data.forEach(item => {
+
+resultsBox.innerHTML += `
+<div class="search-item">
+<a href="/doctor/${item.id}/">
+${item.name} - ${item.department}
+</a>
+</div>
+`;
+
+});
+
+});
+
+});
+
+});   
+
+</script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Appointment Success
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Appointment Booked Successfully!</h2>
+
+    <p>Your appointment has been scheduled.</p>
+
+    <a href="{% url 'home' %}" class="btn">Go Back Home</a>
+
+</div>
+
+{% endblock %}

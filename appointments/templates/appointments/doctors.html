@@ -14,7 +14,7 @@ Doctors
 
 <label>Select Department</label>
 
-<select name="department">
+<select name="department" onchange="this.form.submit()">
 
 <option value="">-- Choose Department --</option>
 
@@ -28,8 +28,6 @@ Doctors
 
 </select>
 
-<button type="submit">Search</button>
-
 </form>
 
 <hr>
@@ -42,19 +40,35 @@ Doctors
 
 <div class="doctor-card">
 
-<h3>{{ doctor.name }}</h3>
+{% if doctor.photo %}
+<img src="{{ doctor.photo.url }}" width="120">
+{% endif %}
+
+<h3>
+<a href="{% url 'doctor_detail' doctor.id %}">
+{{ doctor.name }}
+</a>
+</h3>
 
 <p><strong>Department:</strong> {{ doctor.department.name }}</p>
 
 <p><strong>Experience:</strong> {{ doctor.experience }} years</p>
 
-<p>{{ doctor.bio }}</p>
+<br>
+
+<a href="{% url 'doctor_detail' doctor.id %}">
+<button>View Profile</button>
+</a>
 
 </div>
 
 {% endfor %}
 
 </div>
+
+{% else %}
+
+<p>No doctors found in this department.</p>
 
 {% endif %}
 

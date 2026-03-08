@@ -1,0 +1,196 @@
+ {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<div class="card">
+
+<div class="hero">
+
+<h1>Quality Healthcare, Simplified</h1>
+
+<p>
+Medicare is a smart healthcare platform designed to connect patients
+with qualified medical professionals.
+</p>
+
+<a href="{% url 'doctors' %}" class="read-btn">Find Doctors</a>
+
+</div>
+
+</div>
+
+
+
+<!-- DEPARTMENTS -->
+
+<div class="card">
+
+<h2>Our Departments</h2>
+
+<div class="doctors-grid">
+
+<div class="doctor-card">
+    <i class="fa-solid fa-heart-pulse"></i>
+<h3>Cardiology</h3>
+<p>Heart and blood vessel treatment.</p>
+</div>
+
+<div class="doctor-card">
+    <i class="fa-solid fa-brain"></i>
+<h3>Neurology</h3>
+<p>Brain and nervous system care.</p>
+</div>
+
+<div class="doctor-card">
+    <i class="fa-solid fa-child"></i>
+<h3>Pediatrics</h3>
+<p>Medical care for children.</p>
+</div>
+
+<div class="doctor-card">
+    <i class="fa-solid fa-bone"></i>
+<h3>Orthopedics</h3>
+<p>Bones, joints and muscles treatment.</p>
+</div>
+
+<div class="doctor-card">
+    <i class="fa-solid fa-user-doctor"></i>
+<h3>Dermatology</h3>
+<p>Skin, hair and nail treatments.</p>
+</div>
+
+<div class="doctor-card">
+    <i class="fa-solid fa-stethoscope"></i>
+<h3>General Medicine</h3>
+<p>Diagnosis and treatment of common diseases.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FEATURED DOCTORS -->
+
+<div class="card">
+
+<h2>Featured Doctors</h2>
+
+<div class="doctors-grid">
+
+{% for doctor in doctors|slice:":3" %}
+
+<div class="doctor-card">
+
+{% if doctor.photo %}
+<img src="{{ doctor.photo.url }}" width="100%">
+{% endif %}
+
+<h3>{{ doctor.name }}</h3>
+
+<p>{{ doctor.department }}</p>
+
+<p>{{ doctor.experience }} Years Experience</p>
+
+<a href="{% url 'doctor_detail' doctor.id %}" class="read-btn">
+View Profile
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<!-- HEALTH ARTICLES -->
+
+<div class="card">
+
+<h2>Health & Wellness Articles</h2>
+
+<div class="articles-grid">
+
+{% for article in articles|slice:":3" %}
+
+<div class="article-card">
+
+{% if article.image %}
+<img src="{{ article.image.url }}" class="article-img">
+{% endif %}
+
+<div class="article-body">
+
+<span class="category">{{ article.category }}</span>
+
+<h3>{{ article.title }}</h3>
+
+<p>Views: {{ article.views }}</p>
+
+<a href="{% url 'article_detail' article.id %}" class="read-btn">
+Read Article
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+<section class="why-section">
+    <h2>Why Choose Medicare?</h2>
+
+    <div class="why-container">
+
+        <div class="why-card">
+            <h3>Qualified Doctors</h3>
+            <p>Our doctors are highly trained and experienced professionals.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>Easy Appointments</h3>
+            <p>Book appointments quickly and easily online.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>Trusted Healthcare</h3>
+            <p>We provide safe and reliable healthcare services.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>24/7 Support</h3>
+            <p>Our platform is available anytime for your needs.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- STATISTICS -->
+
+<div class="card hero">
+
+<h2>Our Impact</h2>
+
+<p>500+ Happy Patients</p>
+
+<p>50+ Professional Doctors</p>
+
+<p>20+ Medical Departments</p>
+
+<p>10+ Years Healthcare Experience</p>
+
+</div>
+
+{% endblock %}

@@ -7,12 +7,34 @@
 <div class="logo">
 <img src="{% static 'images/logo.png' %}" alt="logo">
 </div>
+  <form class="search-form" method="GET" >
 
-<input class="search-bar" type="text" placeholder="Search...">
+<input
+class="search-bar"
+type="text"
+id="search-input"
+placeholder="Search doctors..."
+autocomplete="off">
+
+<div id="search-results" class="search-results"></div>
+
+</form>
 
 <div class="nav-icons">
+
 <button class="icon-btn">⚙</button>
-<button class="login-btn">Login</button>
+
+{% if user.is_authenticated %}
+
+<span>Hi {{ user.username }}</span>
+<a href="{% url 'logout' %}" class="login-btn">Logout</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="login-btn">Login</a>
+<a href="{% url 'register' %}" class="login-btn">Register</a>
+
+{% endif %}
 </div>
 
 </div>
@@ -20,11 +42,14 @@
 
 <div class="nav-buttons">
 
-<a href="{% url 'doctors' %}">See Doctors</a>
-<a href="#">Drugs & Supplements</a>
-<a href="#">Health Library</a>
-<a href="{% url 'book_appointment' %}">Book Appointment</a>
-<a href="#">Research</a>
+<a href="{% url 'home' %}">Home</a>
+
+<a href="{% url 'doctors' %}">Doctors</a>
+
+<a href="{% url 'doctors' %}">Book Appointment</a>
+
+<a href="{% url 'my_appointments' %}">My Appointments</a>
+
 <a href="{% url 'wellbeing' %}">Well-Being</a>
 
 </div>

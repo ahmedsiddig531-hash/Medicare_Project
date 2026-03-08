@@ -17,7 +17,7 @@ Book Appointment
 </div>
 {% endfor %}
 {% endif %}
-
+<h2>Book Appointment with Dr. {{ doctor.name }}</h2>
 <form method="POST">
 
 {% csrf_token %}
@@ -37,18 +37,6 @@ Book Appointment
 <label>Age</label><br>
 <input type="number" name="age" placeholder="Enter Your Age" required>
 <br><br>
-
-<label>Select Doctor</label><br>
-
-<select name="doctor" required>
-
-{% for doctor in doctors %}
-
-<option value="{{ doctor.id }}">
-{{ doctor.name }} - {{ doctor.department }}
-</option>
-
-{% endfor %}
 
 </select>
 
